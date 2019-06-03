@@ -27,9 +27,9 @@ def on_key_down(key):
 
 
 def on_key_up(key):
+    game.handle_key_up(key)
     if key == keys.SPACE:
         game.start()
-    game.handle_key_up(key)
 
 
 pgzrun.go()

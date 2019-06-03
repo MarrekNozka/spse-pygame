@@ -15,18 +15,18 @@ class Ball(Actor):
 
     def update(self):
         if self.left <= 0 or self.right >= SCREEN_WIDTH:
-            self.speedx = -self.speedx
+            self.reflection_x()
         if self.top <= 0:
-            self.speedy = -self.speedy
-        if self.bottom >= SCREEN_HEIGHT - 1:
-            self.speedx = 0
-            self.speedy = 0
+            self.reflection_y()
         self.x += self.speedx
         self.y += self.speedy
 
-    def reflection(self, press_keys):
+    def reflection_x(self):
+        self.speedx = -self.speedx
+
+    def reflection_y(self, press_keys=tuple()):
         if pygame.K_LEFT in press_keys:
-            self.speedx -= 2
+            self.speedx -= 1
         if pygame.K_RIGHT in press_keys:
-            self.speedx += 2
+            self.speedx += 1
         self.speedy = -self.speedy
